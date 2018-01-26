@@ -174,3 +174,5 @@ hardfork.hpp
 *.wallet
 witness_node_data_dir
 wallet.json
+.swp
+.swo

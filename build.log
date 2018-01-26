@@ -1,0 +1,51 @@
+[  3%] Built target project_secp256k1
+[ 31%] Built target fc
+[ 36%] Built target all_tests
+[ 37%] Built target task_cancel_test
+[ 38%] Built target blind
+[ 39%] Built target api
+[ 40%] Built target hmac_test
+[ 41%] Built target bloom_test
+[ 42%] Built target real128_test
+[ 43%] Built target log_test
+[ 44%] Built target blinding_test
+[ 44%] Built target bip_lock
+[ 45%] Built target ecc_test
+[ 46%] Built target graphene_db
+[ 47%] Built target deterministic_openssl_rand
+[ 48%] Built target cat-parts
+File "/mnt/coding.net/cybex-core/libraries/chain/include/graphene/chain/hardfork.hpp" up-to-date with .d directory
+[ 48%] Built target build_hardfork_hpp
+[ 48%] Building CXX object libraries/chain/CMakeFiles/graphene_chain.dir/database.cpp.o
+In file included from //mnt/coding.net/cybex-core/libraries/chain/include/cybex/crowdfund_ops.hpp:27:0,
+                 from //mnt/coding.net/cybex-core/libraries/chain/include/graphene/chain/protocol/operations.hpp:42,
+                 from //mnt/coding.net/cybex-core/libraries/chain/include/graphene/chain/account_object.hpp:25,
+                 from //mnt/coding.net/cybex-core/libraries/chain/include/graphene/chain/database.hpp:27,
+                 from //mnt/coding.net/cybex-core/libraries/chain/db_balance.cpp:25,
+                 from //mnt/coding.net/cybex-core/libraries/chain/database.cpp:25:
+//mnt/coding.net/cybex-core/libraries/chain/include/cybex/crowdfund.hpp:53:39: error: ‘multi_index_container’ does not name a type
+    using crowdfund_multi_index_type = multi_index_container<
+                                       ^
+//mnt/coding.net/cybex-core/libraries/chain/include/cybex/crowdfund.hpp:68:28: error: ‘generic_index’ does not name a type
+    using crowdfund_index = generic_index<crowdfund_object, crowdfund_multi_index_type>;
+                            ^
+In file included from //mnt/coding.net/cybex-core/libraries/chain/include/cybex/crowdfund_ops.hpp:28:0,
+                 from //mnt/coding.net/cybex-core/libraries/chain/include/graphene/chain/protocol/operations.hpp:42,
+                 from //mnt/coding.net/cybex-core/libraries/chain/include/graphene/chain/account_object.hpp:25,
+                 from //mnt/coding.net/cybex-core/libraries/chain/include/graphene/chain/database.hpp:27,
+                 from //mnt/coding.net/cybex-core/libraries/chain/db_balance.cpp:25,
+                 from //mnt/coding.net/cybex-core/libraries/chain/database.cpp:25:
+//mnt/coding.net/cybex-core/libraries/chain/include/cybex/crowdfund_contract.hpp:58:48: error: ‘multi_index_container’ does not name a type
+    using crowdfund_contract_multi_index_type = multi_index_container<
+                                                ^
+//mnt/coding.net/cybex-core/libraries/chain/include/cybex/crowdfund_contract.hpp:73:37: error: ‘generic_index’ does not name a type
+    using crowdfund_contract_index = generic_index<crowdfund_contract_object, crowdfund_contract_multi_index_type>;
+                                     ^
+In file included from //mnt/coding.net/cybex-core/libraries/chain/database.cpp:35:0:
+//mnt/coding.net/cybex-core/libraries/chain/db_notify.cpp: In member function ‘void get_impacted_account_visitor::operator()(const graphene::chain::withdraw_crowdfund_operation&)’:
+//mnt/coding.net/cybex-core/libraries/chain/db_notify.cpp:198:28: error: ‘const struct graphene::chain::withdraw_crowdfund_operation’ has no member named ‘owner’
+       _impacted.insert( op.owner );
+                            ^
+make[2]: *** [libraries/chain/CMakeFiles/graphene_chain.dir/database.cpp.o] Error 1
+make[1]: *** [libraries/chain/CMakeFiles/graphene_chain.dir/all] Error 2
+make: *** [all] Error 2
