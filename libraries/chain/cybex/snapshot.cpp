@@ -99,8 +99,9 @@ void block_callback::snapshot(database &db)
         auto asset_id = asset_id_type(0);
 
          bool first = true;
-         buffer[strftime(buffer, sizeof(buffer), "%Y %m %d %H:%M:%S", &tm)]=0;
-         out << "{\"timestamp\":\"" << buffer<<"\",\n";
+         strftime(buffer, sizeof(buffer)-1, "%Y %m %d %H:%M:%S", &tm);
+         
+         out << "{\"timestamp\":\"" << std::string(buffer)<<"\",\n";
          out << "\"block\":" << block_num <<",\n";
          out << "\"data\":[";
         for( const account_object& acct : account_idx )

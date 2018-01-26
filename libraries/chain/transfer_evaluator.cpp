@@ -37,6 +37,26 @@ void_result transfer_evaluator::do_evaluate( const transfer_operation& op )
    const account_object& to_account      = op.to(d);
    const asset_object&   asset_type      = op.amount.asset_id(d);
 
+   for ( auto ext: op.extensions)
+   {
+      if(ext.which()==4)
+      {
+                cybex_ext_xfer_to_name & ext1= ext.get<cybex_ext_xfer_to_name>();
+                FC_ASSERT(to_account.name==ext1.name,"${id} is ${to}.it does not match ${name}",
+                     ("id",op.to)
+                     ("to",to_account.name)
+                     ("name",ext1.name) );
+                FC_ASSERT(asset_type.symbol==ext1.asset_sym,"asset ${id} is ${asset}.it does not match ${sym}",
+                     ("id",op.amount.asset_id)
+                     ("asset",asset_type.symbol)
+                     ("sym",ext1.asset_sym) );
+                const asset_object&   fee_asset_type      = op.fee.asset_id(d);
+                FC_ASSERT(fee_asset_type.symbol==ext1.fee_asset_sym,"fee asset ${id} is ${asset}.it does not match ${sym}",
+                     ("id",op.fee.asset_id)
+                     ("asset",fee_asset_type.symbol)
+                     ("sym",ext1.fee_asset_sym) );
+      }
+   }
    try {
 
       GRAPHENE_ASSERT(
